@@ -40,11 +40,11 @@ router.get('/', async(req, res) => {
 
 
 //get an existing target project
-router.get('/:id', async(req, res) => {
+router.get('/:projectId', async(req, res) => {
     try{
-        const proj = await Project.findById(req.params.id)
+        const proj = await Project.findById(req.params.projectId)
         if (req.user._id != proj.user) {
-            console.log("Is this an object id: ", req.params.id);
+            // console.log("Is this an object id: ", req.params.projectId);
             return res.status(403).json({message: 'User forbidden from updating this project'});
         }
         // This needs an authorization check
@@ -61,10 +61,10 @@ router.get('/:id', async(req, res) => {
 
 
 //get an existing target project
-router.put('/:id', async(req, res) => {
+router.put('/:projectId', async(req, res) => {
     try{
         // get all the projects for the user (you can filter based on logged in user {author: req.user._id}
-        const proj = await Project.findByIdAndUpdate(req.params.id, req.body, { returnDocument: 'after' })
+        const proj = await Project.findByIdAndUpdate(req.params.projectId, req.body, { returnDocument: 'after' })
 
         if (req.user._id != proj.user ){
           return res.status(403).json({message: 'User forbidden from updating this project'})
@@ -80,10 +80,10 @@ router.put('/:id', async(req, res) => {
     }
 })
 
-router.delete('/:id', async(req, res) => {
+router.delete('/:projectId', async(req, res) => {
     try {
     // This needs an authorization check
-    const Proj = await Project.findByIdAndDelete(req.params.id);
+    const Proj = await Project.findByIdAndDelete(req.params.projectId);
     if (!Proj) {
       return res.status(404).json({ message: 'No Project found with this id!' });
     }
