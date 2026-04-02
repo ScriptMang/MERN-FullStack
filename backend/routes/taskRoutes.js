@@ -9,12 +9,12 @@ import {authMiddleware} from '../utils/auth.js'
 const router = express.Router({mergeParams: true});
 router.use(authMiddleware);
 
-// add a task for route api/projects/:id/tasks
+// add a task for route api/projects/:projectId/tasks
 router.post('/', async(req, res)=>{
     try {
         const tasks = await Task.create({
             ...req.body,
-            project: req.params.id
+            project: req.params.projectId
         })
         res.status(201).json(tasks)
     }catch(err){
@@ -24,7 +24,7 @@ router.post('/', async(req, res)=>{
 })
 
 
-// fetch all tasks for route api/projects/:id/tasks
+// fetch all tasks for route api/projects/:projectId/tasks
 router.get('/', async(req, res) => {
     try{
         // get all the projects for the user (you can filter based on logged in user {author: req.user._id})
@@ -41,7 +41,7 @@ router.get('/', async(req, res) => {
 //get an existing target task
 router.put('/:taskId', async(req, res) => {
     try{
-        const proj = await Project.findById(req.params.id) 
+        const proj = await Project.findById(req.params.projectId) 
         console.log("current project user_id from taskRoutes is: ", proj)
         console.log("whats inside req params from taskRoutes: ", req.params)
 

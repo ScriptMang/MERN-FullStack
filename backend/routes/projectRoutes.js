@@ -6,7 +6,7 @@ import {authMiddleware} from '../utils/auth.js'
 
 const router = express.Router({mergeParams: true});
 router.use(authMiddleware);
-router.use("/:id/tasks", taskRoutes);
+router.use("/:projectId/tasks", taskRoutes);
 
 // add a project
 router.post('/', async(req, res)=>{
