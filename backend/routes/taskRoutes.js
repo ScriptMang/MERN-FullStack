@@ -42,8 +42,8 @@ router.get('/', async(req, res) => {
 router.put('/:taskId', async(req, res) => {
     try{
         const proj = await Project.findById(req.params.projectId) 
-        console.log("current project user_id from taskRoutes is: ", proj)
-        console.log("whats inside req params from taskRoutes: ", req.params)
+        // console.log("current project user_id from taskRoutes is: ", proj)
+        // console.log("whats inside req params from taskRoutes: ", req.params)
 
         // console.log("current user from taskRoutes : ", req.user)
         if (req.user._id != proj.user){
@@ -62,10 +62,10 @@ router.put('/:taskId', async(req, res) => {
 })
 
 // delete a task
-router.delete('/:id', async(req, res) => {
+router.delete('/:taskId', async(req, res) => {
     try {
     // This needs an authorization check
-    const task = await Task.findByIdAndDelete(req.params.id);
+    const task = await Task.findByIdAndDelete(req.params.taskId);
     if (!task) {
       return res.status(404).json({ message: 'No task found with this id!' });
     }
