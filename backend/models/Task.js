@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 
+const status = ['To Do', 'In progress', 'Done']
 const taskSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -12,6 +13,7 @@ const taskSchema = new mongoose.Schema({
     },
     status: {
         type: String,
+        enum: status,
         required: true,
     },
     project: {
