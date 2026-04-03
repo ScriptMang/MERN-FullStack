@@ -20,10 +20,10 @@ function Register(){
     }
     const handleSubmit = async(e) => {
         e.preventDefault()
-        console.log(form)
+        // console.log(form)
         try{
             const {data}= await userClient.post('/register', form);
-            console.log(data);
+            // console.log(data);
             localStorage.setItem("token", data.token)
             setUser(data.user)
             navigate("/dashboard")

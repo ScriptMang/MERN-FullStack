@@ -16,7 +16,7 @@ function ProjectDetails(){
                 try{
                 // get our tasks from db
                 const {data} = await projectClient.get(`/${projectId}/tasks`)
-                console.log("Show me this projects tasks: ", data)
+                // console.log("Show me this projects tasks: ", data)
                 // save that in component's state
                 setTasks(data)
                 }catch(err){
