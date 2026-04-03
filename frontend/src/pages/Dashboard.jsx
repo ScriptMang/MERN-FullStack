@@ -84,9 +84,17 @@ function Dashboard(){
                         console.log(e)                    
                     }
                 }
+                const handleProjectEdit = async(e) => {
+                    try{
+                        await projectClient.update(`/${project._id}`)
+                    }catch(e){
+                        console.log(e)
+                    }
+                }
                 return( 
                 <div key={project._id}>
                     <Project project={project} />
+                    <button onClick={handleProjectEdit}>edit</button>
                     <button onClick={handleProjectDelete}>delete</button>
                </div>
                )
