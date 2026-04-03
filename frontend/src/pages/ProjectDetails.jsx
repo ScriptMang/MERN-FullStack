@@ -81,12 +81,12 @@ function ProjectDetails(){
             </form>
 
             
-            {projects.map(task => { 
+            {tasks.map(task => { 
                 const handleTaskDelete = async (e) => {
                     try{
-                        await projectClient.delete(`/${project._id}`)
+                        await taskClient.delete(`/${task._id}`)
                         const clickedTask = task
-                        setTasks(tasks => tasks.filter(currTask => currTask._id !== clickedProj._id))
+                        setTasks(tasks => tasks.filter(currTask => currTask._id !== clickedTask._id))
                     } catch (e){
                         console.log(e)                    
                     }
