@@ -26,7 +26,7 @@ function Register(){
             console.log(data);
             localStorage.setItem("token", data.token)
             setUser(data.user)
-            navigate("/feed")
+            navigate("/dashboard")
         }catch(err){
             console.dir(err)
             alert(err.response.data.message)
