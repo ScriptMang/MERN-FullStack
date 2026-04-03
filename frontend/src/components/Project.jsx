@@ -7,4 +7,4 @@ function Project({ project }) {
     )
 }
 
-export default Post
+export default Project

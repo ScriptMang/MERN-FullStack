@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import {projectClient} from '../clients/api.js'
-import Project from "../components/Post"
+import Project from "../components/Project"
 
 
 function Dashboard(){
