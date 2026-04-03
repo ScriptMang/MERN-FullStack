@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
+import {useUser} from '../context/UserContext.jsx'
 import {projectClient} from '../clients/api.js'
 import Task from '../components/Task' 
 
@@ -9,7 +10,7 @@ function ProjectDetails(){
       const [description, setDescription] = useState('')
       const [status, setStatus] = useState('')
       const {projectId} = useParams()
-
+      const {}= useUser();
         useEffect(()=>{
             async function getData(){
                 try{
