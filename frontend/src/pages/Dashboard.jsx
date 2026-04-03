@@ -45,10 +45,10 @@ function Dashboard(){
     return(
        <div>
 
-            <h1>Feed Page</h1>
+            <h1>Project's Page</h1>
 
             <form onSubmit={handleSubmit}>
-                <h2>Leave a post here:</h2>
+                <h2>Add a new project here:</h2>
                 <label htmlFor="title">Title:</label>
                 <input 
                     type="text" 
