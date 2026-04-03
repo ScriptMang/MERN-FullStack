@@ -5,8 +5,8 @@ import Project from "../components/Project"
 
 function Dashboard(){
       const [projects, setProjects] = useState([])
-    const [title, setTitle] = useState('')
-    const [body, setBody] = useState('')
+    const [name, setName] = useState('')
+    const [description, setDescription] = useState('')
     
     useEffect(()=>{
         async function getData(){
@@ -27,15 +27,15 @@ function Dashboard(){
         e.preventDefault()
 
         try {
-            // make a POST request to create the post (based off the state: title and body)
-            const { data } = await projectClient.post('/', { title, body })
+            // make a POST request to create the post (based off the state: name and description)
+            const { data } = await projectClient.post('/', { name, description })
         
             // add the new post to our state
             setProjects([data, ...projects])
 
             // reset the form 
-            setTitle('')
-            setBody('')
+            setName('')
+            setDescription('')
 
         } catch(err) {
             console.log(err)
@@ -49,22 +49,22 @@ function Dashboard(){
 
             <form onSubmit={handleSubmit}>
                 <h2>Add a new project here:</h2>
-                <label htmlFor="title">Title:</label>
+                <label htmlFor="name">Title:</label>
                 <input 
                     type="text" 
-                    id="title"
+                    id="name"
                     required={true}
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                 />
                 <br />
-                <label htmlFor="body">Body:</label>
+                <label htmlFor="description">Body:</label>
                 <textarea 
                     type="text" 
-                    id="body"
+                    id="description"
                     required={true}
-                    value={body}
-                    onChange={(e) => setBody(e.target.value)}
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
                 />
                 <br />
                 <button>Submit</button>
