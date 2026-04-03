@@ -27,10 +27,12 @@ router.post('/', async(req, res)=>{
 // fetch all tasks for route api/projects/:projectId/tasks
 router.get('/', async(req, res) => {
     try{
+        console.log('testing get route for tasks')
         // get all the projects for the user (you can filter based on logged in user {author: req.user._id})
         const tasks = await Task.find({ user: {$eq: req.user._id}})
                                 .sort({_id: 1})
                                 .populate('user', 'username')
+        console.log("Show me this projects tasks in the get route:", tasks)
         res.status(200).json(tasks)
     }catch(err){
         console.log(err.message)

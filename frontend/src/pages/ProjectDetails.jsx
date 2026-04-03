@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
-import {taskClient} from '../clients/api.js'
+import {useParams} from 'react-router-dom'
+import {projectClient} from '../clients/api.js'
 import Task from '../components/Task' 
 
 function ProjectDetails(){
@@ -7,13 +8,14 @@ function ProjectDetails(){
       const [title, setTitle] = useState('')
       const [description, setDescription] = useState('')
       const [status, setStatus] = useState('')
-        
+      const {projectId} = useParams()
+
         useEffect(()=>{
             async function getData(){
                 try{
                 // get our tasks from db
-                const {data} = await taskClient.get('/')
-    
+                const {data} = await projectClient.get(`/${projectId}/tasks`)
+                console.log("Show me this projects tasks: ", data)
                 // save that in component's state
                 setTasks(data)
                 }catch(err){
@@ -21,14 +23,14 @@ function ProjectDetails(){
                 }
             }
             getData()
-        }, [])
+        }, [projectId])
         
         const handleSubmit = async (e) => {
             e.preventDefault()
     
             try {
-                // make a POST request to create the post (based off the state: title and desTitletion)
-                const { data } = await taskClient.post('/', { title, description, status })
+                // make a POST request to create the task (based off the state: title, status, description)
+                const { data } = await projectClient.post(`/${projectId}/tasks`, { title, description, status })
             
                 // add the new post to our state
                 setTasks([data, ...tasks])
@@ -56,7 +58,7 @@ function ProjectDetails(){
                     type="text" 
                     id="title"
                     required={true}
-                    value={title}Title
+                    value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
                 <br />
@@ -85,7 +87,7 @@ function ProjectDetails(){
             {tasks.map(task => { 
                 const handleTaskDelete = async (e) => {
                     try{
-                        await taskClient.delete(`/${task._id}`)
+                        await projectClient.delete(`/${projectId}/tasks/${task._id}`)
                         const clickedTask = task
                         setTasks(tasks => tasks.filter(currTask => currTask._id !== clickedTask._id))
                     } catch (e){
@@ -102,8 +104,5 @@ function ProjectDetails(){
             )}
         </div>
         )
-
-
-
 }
 export default ProjectDetails

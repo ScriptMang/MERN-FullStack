@@ -19,13 +19,13 @@ projectClient.interceptors.request.use((req)=>{
     return req
 })
 
-export const taskClient = axios.create({
-    baseURL: `${BASE_URL}/api/projects/:projectId/tasks`
-})
+// export const taskClient = axios.create({
+//     baseURL: `${BASE_URL}/api/projects/:projectId/tasks`
+// })
 
-taskClient.interceptors.request.use((req)=>{
-    if (token()) {
-        req.headers.Authorization = `Bearer ${token()}`
-    }
-    return req
-})
+// taskClient.interceptors.request.use((req)=>{
+//     if (token()) {
+//         req.headers.Authorization = `Bearer ${token()}`
+//     }
+//     return req
+// })

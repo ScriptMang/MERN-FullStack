@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import {useNavigate} from 'react-router-dom'
 import {projectClient} from '../clients/api.js'
 import Project from "../components/Project"
 
@@ -7,7 +8,8 @@ function Dashboard(){
     const [projects, setProjects] = useState([])
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
-    
+    const navigate = useNavigate();
+
     useEffect(()=>{
         async function getData(){
             try{
@@ -91,8 +93,11 @@ function Dashboard(){
                         console.log(e)
                     }
                 }
+                const sendToTaskPage = () => {
+                    navigate(`/project_details/${project._id}`)
+                }
                 return( 
-                <div key={project._id}>
+                <div className="projectItem" key={project._id} onClick={sendToTaskPage}>
                     <Project project={project} />
                     <button onClick={handleProjectEdit}>edit</button>
                     <button onClick={handleProjectDelete}>delete</button>

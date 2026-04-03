@@ -5,6 +5,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 import Navbar from './components/Navbar'
+import ProjectDetails from './pages/ProjectDetails'
 
 import './App.css'
 
@@ -15,6 +16,7 @@ function App() {
    <Navbar />
     { user ? 
     <Routes>
+      <Route path="/project_details/:projectId" element={<ProjectDetails />} />
       <Route path="/dashboard" element={<Dashboard/>} />
       <Route path="*" element={<Navigate to="/dashboard" />} />
     </Routes>
