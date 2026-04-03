@@ -4,7 +4,7 @@ import Project from "../components/Project"
 
 
 function Dashboard(){
-      const [projects, setProjects] = useState([])
+    const [projects, setProjects] = useState([])
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     
@@ -42,6 +42,9 @@ function Dashboard(){
         }
     }
 
+  
+
+
     return(
        <div>
 
@@ -71,11 +74,23 @@ function Dashboard(){
             </form>
 
             
-            {projects.map(project => 
-                <Project 
-                    project={project} 
-                    key={project._id} 
-                />
+            {projects.map(project => { 
+                const handleProjectDelete = async (e) => {
+                    try{
+                        await projectClient.delete(`/${project._id}`)
+                        const clickedProj = project
+                        setProjects(projs => projs.filter(proj => proj._id !== clickedProj._id))
+                    } catch (e){
+                        console.log(e)                    
+                    }
+                }
+                return( 
+                <div key={project._id}>
+                    <Project project={project} />
+                    <button onClick={handleProjectDelete}>delete</button>
+               </div>
+               )
+            }
             )}
         </div>
     )
