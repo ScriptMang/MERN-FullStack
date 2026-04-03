@@ -36,6 +36,7 @@ function ProjectDetails(){
                 // reset the form 
                 setTitle('')
                 setDescription('')
+                setStatus('')
     
             } catch(err) {
                 console.log(err)
