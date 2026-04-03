@@ -86,7 +86,7 @@ function Dashboard(){
                 }
                 const handleProjectEdit = async(e) => {
                     try{
-                        await projectClient.update(`/${project._id}`)
+                        
                     }catch(e){
                         console.log(e)
                     }
