@@ -33,32 +33,34 @@ function Login(){
     }
 
     return(
-        <>
-        <h1>Login Page</h1>
-        <form onSubmit={handleSubmit}>
-       
-            <label htmlFor="email">Email:</label>
-            <input 
-                value={form.email}
-                onChange={handleChange}
-                id="email"
-                name="email"
-                type="text"
-                required 
-            />
-
-            <label htmlFor="password">Password: </label>
-            <input 
-                value={form.password}
-                onChange={handleChange}
-                id="password"
-                name="password"
-                type="password"
-                required 
-            />
-            <button>Login</button>
+        <div id="loginPage">
+            <h1 id="loginHeading">Login Page</h1>
+            <form id="loginForm" onSubmit={handleSubmit}>
+                <div>
+                    <label htmlFor="email">Email: </label>
+                    <input 
+                    value={form.email}
+                    onChange={handleChange}
+                    id="email"
+                    name="email"
+                    type="text"
+                    required 
+                    />
+                </div>
+                <div>
+                    <label htmlFor="password">Password: </label>
+                    <input 
+                    value={form.password}
+                    onChange={handleChange}
+                    id="password"
+                    name="password"
+                    type="password"
+                    required 
+                    />
+                </div>
+            <button id="loginButton">Login</button>
         </form>
-        </>
+        </div>
     )
 }
 
