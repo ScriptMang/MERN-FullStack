@@ -33,8 +33,13 @@ function Login(){
     }
 
     return(
-        <div id="loginPage">
-            <h1 id="loginHeading">Login Page</h1>
+        <>
+            <div id="loginContainer">
+            <div id="loginHeadingContainer">
+                <div id="taskerProSubtitle">Tasker Pro</div>
+                <h1 id="loginFormHeading">Login</h1> 
+            </div>
+            <div id="formContainer">  
             <form id="loginForm" onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="email">Email: </label>
@@ -60,7 +65,9 @@ function Login(){
                 </div>
             <button id="loginButton">Login</button>
         </form>
+            </div>
         </div>
+        </>
     )
 }
 
