@@ -34,7 +34,7 @@ function Register(){
     }
 
     return(
-        <>
+        <div id="registerForm">
         <h1>Register Form</h1>
         <form onSubmit={handleSubmit}>
             <label htmlFor="username">Username: </label>
@@ -68,7 +68,7 @@ function Register(){
             />
             <button>Register</button>
         </form>
-        </>
+        </div>
     )
 }
 

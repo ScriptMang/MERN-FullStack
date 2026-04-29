@@ -1,3 +1,22 @@
+
+#registerForm {
+display: flex;
+flex-direction: column;
+height: 500px;
+width:  500px;
+align-self: center;
+align-items: center;
+justify-content: center;
+border: solid white 1px;
+border-radius: 50px;
+}
+
+#registerForm form {
+    display: flex;
+    flex-direction: column;
+    
+}
+
 #loginContainer{
     display: flex;
     flex-direction: column;
