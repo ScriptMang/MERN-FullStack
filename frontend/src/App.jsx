@@ -1,6 +1,7 @@
 import {Routes, Route, Navigate} from 'react-router-dom'
 import  {useUser} from './context/UserContext.jsx'
 
+import Homepage from './pages/Homepage'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
@@ -22,6 +23,7 @@ function App() {
     </Routes>
     :
    <Routes>
+      <Route path="/" element={<Homepage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="*" element={<Navigate to="/login" />} />

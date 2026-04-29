@@ -14,7 +14,6 @@ border-radius: 50px;
 #registerForm form {
     display: flex;
     flex-direction: column;
-    
 }
 
 #loginContainer{
