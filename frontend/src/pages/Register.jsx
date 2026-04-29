@@ -1,7 +1,7 @@
 import {useState} from "react"
 import {userClient} from '../clients/api.js'
 import {useUser} from '../context/UserContext.jsx'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, Link} from 'react-router-dom'
 
 function Register(){
     const {setUser} = useUser()
@@ -67,6 +67,7 @@ function Register(){
                 required 
             />
             <button>Register</button>
+            <p>Already have an account? <Link to={"/login"}> Login</Link></p>
         </form>
         </div>
     )
